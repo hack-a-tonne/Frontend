@@ -8,6 +8,7 @@
     <meta name="author" content="Hack-a-Tonne Hacking Team by muensterhack2018">
     <title>Hack-a-Tonne</title>
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="vendor/openstreetmap/css/leaflet.css" rel="stylesheet">
     <link href="assets/css/style.css" rel="stylesheet">
 </head>
 
@@ -23,18 +24,12 @@
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="#">Home
+                        <a class="nav-link" href="#">Karte
                             <span class="sr-only">(current)</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Services</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Contact</a>
+                        <a class="nav-link" href="#">Liste</a>
                     </li>
                 </ul>
             </div>
@@ -42,11 +37,11 @@
     </nav>
 
     <!-- Page Content -->
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
             <div class="col-lg-9">
                 <!-- Karte -->
-
+                <div id="map"></div>
             </div>
             <div class="col-lg-3">
                 <!-- Details -->
@@ -58,6 +53,8 @@
     <!-- Bootstrap core JavaScript -->
     <script src="vendor/jquery/js/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="vendor/openstreetmap/js/leaflet.min.js"></script>
+    <script src="assets/js/map.js"></script>
     <script src="assets/js/main.js"></script>
 
 </body>

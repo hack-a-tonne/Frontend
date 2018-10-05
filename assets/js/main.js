@@ -1,1 +1,3 @@
-console.log("Hallo!");
+
+
+var map = new Map('map');
