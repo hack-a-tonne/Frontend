@@ -3,6 +3,10 @@ html,body {
     margin: 0;
     height: 100%;
 }
+
+h4 {
+    line-height: 3rem;
+}
 .container-fluid {
     height: 100%;
     padding: 0px;
@@ -31,6 +35,16 @@ html,body {
     background-color: #00c0ef !important;
 }
 
+.bg-ok {
+    background-color: #29a008;
+    color: #fff;
+}
+
+.bg-danger {
+    background-color: red;
+    color: #fff;
+}
+
 .info-box-icon {
     border-top-left-radius: 2px;
     border-top-right-radius: 0;
@@ -41,9 +55,8 @@ html,body {
     height: 90px;
     width: 90px;
     text-align: center;
-    font-size: 45px;
+    font-size: 30px;
     line-height: 90px;
-    background: rgba(0,0,0,0.2);
 }
 
 .info-box-content {
@@ -55,4 +68,9 @@ html,body {
     display: block;
     font-weight: bold;
     font-size: 18px;
+}
+
+.sidebar-container {
+    height: 100vh;
+    overflow: scroll;
 }

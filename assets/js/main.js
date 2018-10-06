@@ -7,10 +7,9 @@ function showSondenSitebar(device_id) {
         type: 'GET',
         dataType: 'json'
     }).then((data) => {
-        console.log(data);
         for (var i = 0; i < data.datasets.length; i++) {
             var current_value = data.datasets[i].data[data.datasets[i].data.length - 1];
-            var htmlElement = sidebar.setElement(data.datasets[i].label, current_value, data.datasets[i].data, device_id);
+            var htmlElement = sidebar.setElement(data.datasets[i].label, current_value, data.datasets[i], device_id);
         }
     })
 }
@@ -28,7 +27,7 @@ $(document).ready(function () {
         dataType: 'json'
     }).then(function (data) {
         data.forEach(element => {
-            var sensor = new Sensor(element.device_id, element.name, element.lat, element.lng,element.tmp);
+            var sensor = new Sensor(element.device_id, element.name, element.lat, element.lng, element.tmp);
             map.draw(sensor);
         });
     });
@@ -49,7 +48,7 @@ function drawTimeLine(device_id, indicatorText) {
         'rgba(255, 159, 64, 1)',
         'rgba(55, 99, 132, 1)',
         'rgba(160, 170, 70, 1)'];
-    
+
     $.ajax({
         url: "https://hackertonne.azurewebsites.net/api/GetValuesByDevice?device_id=" + device_id,
         type: 'GET',

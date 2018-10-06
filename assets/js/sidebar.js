@@ -43,20 +43,35 @@ class Sidebar {
 }
 
 class SidebarElement {
-    constructor(title, value, data = [], device_id) {
+    constructor(title, value, dataset = [], device_id) {
         this.title = title;
         this.value = value;
-        this.data = data;
+        this.data = dataset.data;
         this.device_id = device_id;
+        this.min = dataset.sensor_min;
+        this.max = dataset.sensor_max;
     }
 
     getHtml() {
-        //return '<div class="sidebar-entry">' + this.title + ' => ' + this.value + '</div>';
+
+        // Check value status
+        if (this.value < this.min) {
+            var status = "Zu klein!";
+            var style = 'bg-danger';
+        } else if (this.value > this.max) {
+            var status = "Zu groß!";
+            var style = 'bg-danger';
+        } else {
+            var status = "Passt!";
+            var style = 'bg-ok';
+        }
+
+        console.log(this.min);
+
         return '<div class="info-box">\
-            <span class="info-box-icon bg-aqua"><i class="icon ion-alert"></i></span>\
+            <span class="info-box-icon ' + style + '">' + this.value + '</span>\
             <div class="info-box-content" >\
         <span class="info-box-text">' + this.title + '</span>\
-        <span class="info-box-number">' + this.value + '</span>\
         <div class="sparkline-block"><span class="sparkline' + getHashFromString(this.title) + '">Laden..</span></div>\
             </div >\
           </div > ';
