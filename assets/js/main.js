@@ -1,9 +1,20 @@
 // Sitebar Logic
-var sidebar = new Sidebar('.value-sidebar');
-sidebar.setElement('Temperatur', '20 °C');
-sidebar.setElement('Sauerstoffgehalt', '24%');
-sidebar.setElement('pH Wert', '5');
-sidebar.setElement('Wert 42', '42');
+var device_id = 14;
+var sidebar = new Sidebar('.value-sidebar', 'Sonde ' + device_id);
+$(document).ready(
+    $.ajax({
+        url: "https://hackertonne.azurewebsites.net/api/GetValuesByDevice?device_id=" + device_id,
+        type: 'GET',
+        dataType: 'json'
+    }).then(function (data) {
+        console.log(data);
+        for (var i = 0; i < data.datasets.length; i++) {
+            var current_value = data.datasets[i].data[data.datasets[i].data.length - 1]
+            var myvalues = [10, 8, 5, 7, 4, 4, 1, 32, 33, 3, 3, 3, 43, 54, 55, 56, 6, 66, 6, 6];
+            var htmlElement = sidebar.setElement(data.datasets[i].label, current_value, data.datasets[i].data);
+        }
+    })
+);
 
 // Map Logic
 var map = new Map('map');
