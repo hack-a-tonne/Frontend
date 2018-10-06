@@ -7,12 +7,12 @@ class Sidebar {
         this.refreshView();
     }
 
-    setElement(title, value, data = []) {
+    setElement(title, value, data = [], device_id = 0) {
         var existingElement = this.elements.find((element) => {
             return element.title == title;
         });
         if (existingElement == null) {
-            existingElement = new SidebarElement(title, value, data);
+            existingElement = new SidebarElement(title, value, data, device_id);
             this.elements.push(existingElement);
         }
         else {
@@ -43,10 +43,11 @@ class Sidebar {
 }
 
 class SidebarElement {
-    constructor(title, value, data = []) {
+    constructor(title, value, data = [], device_id) {
         this.title = title;
         this.value = value;
         this.data = data;
+        this.device_id = device_id;
     }
 
     getHtml() {
@@ -63,6 +64,10 @@ class SidebarElement {
 
     drawSparkline() {
         $('.sparkline' + getHashFromString(this.title)).sparkline(this.data, { width: '100%' });
+        $('.sparkline' + getHashFromString(this.title)).click((e) => {
+            console.log(e);
+            displayChart(this.device_id, this.title)
+        });
     }
 
 }

@@ -6,20 +6,14 @@ function showSondenSitebar(device_id) {
         url: "https://hackertonne.azurewebsites.net/api/GetValuesByDevice?device_id=" + device_id,
         type: 'GET',
         dataType: 'json'
-    }).then(function (data) {
+    }).then((data) => {
         console.log(data);
         for (var i = 0; i < data.datasets.length; i++) {
-            var current_value = data.datasets[i].data[data.datasets[i].data.length - 1]
-            var myvalues = [10, 8, 5, 7, 4, 4, 1, 32, 33, 3, 3, 3, 43, 54, 55, 56, 6, 66, 6, 6];
-            var htmlElement = sidebar.setElement(data.datasets[i].label, current_value, data.datasets[i].data);
+            var current_value = data.datasets[i].data[data.datasets[i].data.length - 1];
+            var htmlElement = sidebar.setElement(data.datasets[i].label, current_value, data.datasets[i].data, device_id);
         }
     })
 }
-var device_id = 14;
-
-$(document).ready(function () {
-    showSondenSitebar(device_id);
-});
 
 // Map Logic
 var map = new Map('map');
@@ -35,17 +29,14 @@ $(document).ready(function () {
     }).then(function (data) {
         data.forEach(element => {
             var sensor = new Sensor(element.device_id, element.name, element.lat, element.lng,element.tmp);
-            map.draw(sensor,
-                function (e) {
-                   //nichts
-                }
-            );
+            map.draw(sensor);
         });
     });
 });
 
 function displayChart(device_id, indicator) {
     drawTimeLine(device_id, indicator);
+    $(".bd-example-modal-lg").modal("show");
 }
 
 function drawTimeLine(device_id, indicatorText) {

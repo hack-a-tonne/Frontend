@@ -8,11 +8,15 @@ class Map {
             }
         ).addTo(this.map);
     }
-    draw(sensor, onclick) {
+    draw(sensor) {
         var marker = L.marker([sensor.lat,sensor.lng]).addTo(this.map);
-        marker.on('click', onclick);
+        marker.on('click', function (e){
+            showSondenSitebar(sensor.id);
+        });
         marker.on('mouseover', function(e) {
-            marker.bindTooltip('Temperatur: ' + sensor.tmp);
+            marker.bindTooltip('Sonde ' + sensor.id +
+            '<br>Gerätetyp: ' + sensor.deviceName + 
+            '<br>Temperatur: ' + sensor.tmp);
             marker.openTooltip();
         });
     }
