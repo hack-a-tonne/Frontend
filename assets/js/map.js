@@ -11,14 +11,23 @@ class Map {
     draw(sensor, onclick) {
         var marker = L.marker([sensor.lat,sensor.lng]).addTo(this.map);
         marker.on('click', onclick);
+        marker.on('mouseover', function(e) {
+            marker.bindTooltip('Temperatur: ' + sensor.tmp);
+            marker.openTooltip();
+        });
+    }
+
+    getLat() {
+        return this.getLat;
     }
 }
 
 class Sensor {
-    constructor(id,deviceName,lat,lng) {
+    constructor(id,deviceName,lat,lng,tmp) {
         this.id = id;
         this.deviceName = deviceName;
         this.lat = lat;
         this.lng = lng;
+        this.tmp = tmp;
     }
 }
