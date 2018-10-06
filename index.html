@@ -9,6 +9,7 @@
     <title>Hack-a-Tonne</title>
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="vendor/openstreetmap/css/leaflet.css" rel="stylesheet">
+    <link href="vendor/ionicons/css/ionicons.min.css" rel="stylesheet">
     <link href="assets/css/style.css" rel="stylesheet">
 </head>
 
@@ -45,21 +46,8 @@
             </div>
             <div class="col-lg-3">
                 <!-- Details -->
-                <div class="value-sidebar"></div>
-                <button onClick="displayChart(14,'Temperatur °C');" type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Large
-                    modal</button>
-
-                <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
-                    aria-hidden="true">
-                    <div class="modal-dialog modal-lg">
-                        <div class="modal-content">
-                            <div class="row">
-                                <div class="col-lg-12">
-                                    <canvas id="myChart" width="400" height="400"></canvas>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <div class="value-sidebar">
+                    Bitte klicke eine Messsonde an, um Messwerte und Details zu sehen!
                 </div>
 
             </div>
@@ -68,6 +56,7 @@
 
     <!-- Bootstrap core JavaScript -->
     <script src="vendor/jquery/js/jquery.min.js"></script>
+    <script src="vendor/jquery/js/jquery.sparkline.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="vendor/openstreetmap/js/leaflet.min.js"></script>
     <script src="vendor/chartjs/js/Chart.bundle.min.js"></script>
